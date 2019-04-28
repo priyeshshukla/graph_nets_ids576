@@ -26,14 +26,6 @@ The model I explored includes three components:
    global attributes (does not compute relations etc.), on each
    message-passing step.
 
-                     Hidden(t)   Hidden(t+1)
-                        |            ^
-           *---------*  |  *------*  |  *---------*
-           |         |  |  |      |  |  |         |
- Input --->| Encoder |  *->| Core |--*->| Decoder |---> Output(t)
-           |         |---->|      |     |         |
-           *---------*     *------*     *---------*
-
  The model is trained by supervised learning. Input graphs are procedurally
  generated, and output graphs have the same structure with the nodes and edges
  of the shortest path labeled (using 2-element 1-hot vectors).
@@ -43,16 +35,12 @@ The model I explored includes three components:
  few steps as possible and it also helps make the output of intermediate steps
  more interpretable.
 
- There's no need for a separate evaluate dataset because the inputs are
- never repeated, so the training loss is the measure of performance on graphs
- from the input distribution.
-
- We also evaluate how well the models generalize to graphs which are up to
+ Evaluate of how well the models generalize to graphs is also done which are up to
  twice as large as those on which it was trained. The loss is computed only
  on the final processing step.
 
  Variables with the suffix _tr are training parameters, and variables with the
  suffix _ge are test/generalization parameters.
 
- After around 2000-5000 training iterations the model reaches near-perfect
+ After around 3000-5000 training iterations the model reaches near-perfect
  performance on graphs with between 8-16 nodes.
