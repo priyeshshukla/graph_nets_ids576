@@ -25,6 +25,8 @@ The model I explored includes three components:
  - A "Decoder" graph network, which independently decodes the edge, node, and
    global attributes (does not compute relations etc.), on each
    message-passing step.
+ 
+ ![alt text](https://github.com/priyeshshukla/graph_nets_ids576/blob/master/gn.PNG?raw=true)
 
  The model is trained by supervised learning. Input graphs are procedurally
  generated, and output graphs have the same structure with the nodes and edges
